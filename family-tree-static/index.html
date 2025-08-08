@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Family Tree</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <header class="app-header">
+      <div class="brand">
+        <span class="logo">🌳</span>
+        <h1>Family Tree</h1>
+      </div>
+      <div class="header-actions">
+        <button id="btn-export" class="btn">Export JSON</button>
+        <label class="btn btn-secondary">
+          Import JSON
+          <input id="input-import" type="file" accept="application/json" hidden />
+        </label>
+        <a class="btn btn-secondary" href="https://github.com/" target="_blank" rel="noreferrer">Help</a>
+      </div>
+    </header>
+
+    <main class="app-main">
+      <aside class="sidebar">
+        <section class="card">
+          <h2>Search</h2>
+          <div class="field-row">
+            <input id="search-input" type="text" placeholder="Search name…" />
+            <button id="btn-search" class="btn btn-primary">Go</button>
+          </div>
+        </section>
+
+        <section class="card">
+          <h2>Add person</h2>
+          <div class="field">
+            <label>Name</label>
+            <input id="person-name" type="text" placeholder="e.g., Alex Johnson" />
+          </div>
+          <div class="field">
+            <label>Birth year (optional)</label>
+            <input id="person-birth" type="number" placeholder="e.g., 1988" />
+          </div>
+          <button id="btn-add-person" class="btn btn-primary">Add person</button>
+        </section>
+
+        <section class="card">
+          <h2>Add parent → child</h2>
+          <div class="field">
+            <label>Parent</label>
+            <select id="select-parent"></select>
+          </div>
+          <div class="field">
+            <label>Child</label>
+            <select id="select-child"></select>
+          </div>
+          <button id="btn-add-edge" class="btn btn-primary">Add relationship</button>
+        </section>
+
+        <section class="card small">
+          <h3>Tips</h3>
+          <ul class="tips">
+            <li>Wheel or pinch to zoom, drag to pan.</li>
+            <li>Click a node to focus.</li>
+            <li>Use Export/Import to move your tree.</li>
+          </ul>
+        </section>
+      </aside>
+
+      <section class="canvas">
+        <div id="canvas-container">
+          <svg id="tree-svg"></svg>
+        </div>
+        <div class="canvas-toolbar">
+          <button id="btn-center" class="btn btn-secondary">Center</button>
+          <button id="btn-fit" class="btn btn-secondary">Fit</button>
+          <span class="spacer"></span>
+          <label class="label-inline">Root:</label>
+          <select id="select-root" class="root-select"></select>
+        </div>
+      </section>
+    </main>
+
+    <footer class="app-footer">
+      <span>Local-only demo. Data stored in your browser.</span>
+    </footer>
+
+    <script src="https://unpkg.com/d3@7"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>
